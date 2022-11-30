@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <main class="main">
+            <div class="container">
+              <div class="post">
+                <div class="post-header">
+                    <span class="date"><%= post.createdAt.toLocaleDateString() %></span>
+                    <span class="author"><%= post.author %></span>
+                    <div class="icons-post">
+                      <a href="/edit/<%= post.id %>" class="edit">
+                        <i class="fa-solid fa-file-pen"></i>
+                      </a> 
+                      <button class="delete" data-id="<%= post.id %>">
+                        <i class="fa-solid fa-trash-can" data-id="<%= post.id %>"></i>
+                      </button> 
+                    </div>
+                </div>
+                <h1 class="post-title" href="#"><%= post.title %></h1>
+                <div class="post-content">
+                    <p class="post-text"><%= post.text %></p>
+                </div>  
+              </div>
+            </div>
+    </main> 
+    <script>
+      document.addEventListener('click', (e) =>{
+          const id = e.target?.dataset?.id || null;
+          if (id){
+              fetch(`/posts/${id}`, {
+                  method: 'DELETE',
+              }).then(()=>{
+                  window.location.href = '/posts';
+              });
+          }
+      });
+  </script>
+</body>
+</html>

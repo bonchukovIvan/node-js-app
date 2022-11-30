@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <main class="main">
+        <section class="new-post-display">
+            <div class="container">
+                <form class="add-form" method="post" action="/add-post">
+                    <div class="metadata"> 
+                            <input type="text" name="title" class="post-input" placeholder="Title">
+                            <input type="text" name="author" class="post-input" placeholder="Author">        
+                    </div>
+                    <label for="title">Post Text</label> 
+                    <textarea  name="text" class="new-post-text" placeholder="Enter you text"></textarea>
+                    <button class="add-post-button" type="submit" name="sbm-button">Submit</button>
+                </form>
+              </div>
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>
